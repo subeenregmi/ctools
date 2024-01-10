@@ -31,6 +31,7 @@ typedef struct Item {
 
 void print_item(Item item);
 void copy_item(Item *dest, Item *src);
+bool compare(Item item1, Item item2);
 
 void set_int(Item *item, int data);
 void set_string(Item *item, char data[]);

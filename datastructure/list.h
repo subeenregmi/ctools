@@ -2,31 +2,41 @@
  *
  * Author: Subeen Regmi <subeenregmi123@gmail.com>
  *
- * Generic singly and doubly linked list.
+ * Implementation of a generic doubly linked list.
  */
 #ifndef DATASTRUCTURE_LIST_H
 #define DATASTRUCTURE_LIST_H
 
 #include "generic.h"
 
+
 typedef struct ListItem {
     Item data;
-    struct ListItem *next;
+    struct ListItem *left;
+    struct ListItem *right;
 } ListItem;
 
 typedef struct List {
-    ListItem *start;
+    struct ListItem *head;
+    struct ListItem *tail;
     unsigned int count;
 } List;
 
+ListItem* create_LInt(int data);
+ListItem* create_LString(char data[]);
+ListItem* create_LChar(char data);
+ListItem* create_LBool(bool data);
+
 void print_list(List list);
-void deallocate(List *list);
+void rprint_list(List list);
 
 Item get_item(List list, int index);
-void add_item(List *list, ListItem *item);
-void add_int(List *list, int data);
-void add_string(List *list, char data[]);
-void add_char(List *list, char data);
-void add_bool(List *list, bool data);
+int find_item(List list, Item item);
+
+void append_item(List *list, ListItem *item);
+void insert_item(List *list, ListItem* item, int index);
+
+void deallocate(List *list);
+
 
 #endif /* DATASTRUCTURE_H */
