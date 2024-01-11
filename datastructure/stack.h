@@ -7,13 +7,15 @@
 #ifndef DATASTRUCTURE_STACK_H
 #define DATASTRUCTURE_STACK_H
 
+#define MAX_STACK_COUNT 64
+
 #include "list.h"
+
 
 typedef List Stack;
 typedef ListItem StackItem;
 
-#define push(stack, item) append_item(stack, item)
-
+inline void push(Stack *stack, StackItem *item);
 ListItem* pop(Stack *stack);
 ListItem* peek(Stack *stack);
 

@@ -9,6 +9,13 @@
 
 #include "stack.h"
 
+inline void push(Stack *stack, StackItem *item) {
+    if (stack->count >= MAX_STACK_COUNT) {
+        perror("Stack is full...");
+        exit(1);
+    }
+    append_item(stack, item);
+}
 
 StackItem* pop(Stack *stack) {
     if (stack->count == 0) {
