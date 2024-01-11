@@ -9,7 +9,7 @@
 
 #include "queue.h"
 
-inline void add_item(Queue *queue, QueueItem *item) {
+inline void enque(Queue *queue, QueueItem *item) {
     if (queue->count >= MAX_QUEUE_COUNT) {
         perror("Queue is full...");
         exit(1);
@@ -17,7 +17,7 @@ inline void add_item(Queue *queue, QueueItem *item) {
     append_item(queue, item);
 }
 
-QueueItem* remove_item(Queue *queue) {
+QueueItem* deque(Queue *queue) {
     if (queue->head == NULL) {
         perror("Queue is empty...");
         exit(1);

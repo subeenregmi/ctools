@@ -128,9 +128,44 @@ void insert_item(List* list, ListItem* item, int index) {
     }
 }
 
+ListItem* remove_item(List *list, int index) {
+    if (index >= list->count || index < 0) {
+        perror("Index is invalid...");
+        exit(1);
+    }
+    ListItem *current = list->head;
+    for(int i=0; i<index; i++) {
+        current = current->right;
+    }
+
+    if (index == 0) {
+        list->head = current->right;
+        if (list->head != NULL) {
+            list->head->left = NULL;
+        }
+        else {
+            list->tail = NULL;
+        }
+        list->count--;
+        return current;
+    }
+    if (index == list->count-1) {
+        current->left->right = NULL;
+        list->tail = current->left;
+        list->count--;
+        return current;
+    }
+    
+    current->left->right = current->right;
+    current->right->left = current->left;
+    list->count--;
+    return current;
+}
+
 void deallocate(List *list) {
     if (list->head == NULL){
-        printf("Empty list...deallocate");
+        perror("Empty list...deallocate");
+        exit(1);
     }
     ListItem *current = list->head;
     while (current != NULL){
@@ -141,4 +176,18 @@ void deallocate(List *list) {
         current = next_item;
     }
     list->count = 0;
+}
+
+int main() {
+    List my_list = {NULL, NULL, 0};
+    append_item(&my_list, create_LInt(5));
+    append_item(&my_list, create_LInt(6));
+    append_item(&my_list, create_LInt(7));
+    print_list(my_list);
+    remove_item(&my_list, 0);
+    remove_item(&my_list, 0);
+    print_list(my_list);
+    remove_item(&my_list, 0);
+    print_list(my_list);
+    rprint_list(my_list);
 }
