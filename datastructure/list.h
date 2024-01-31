@@ -34,9 +34,9 @@ Item get_item(List list, int index);
 int find_item(List list, Item item);
 
 void append_item(List *list, ListItem *item);
-void insert_item(List *list, ListItem* item, int index);
+void insert_item(List *list, ListItem *item, int index);
+ListItem* remove_item(List *list, int index);
 
 void deallocate(List *list);
 
-
-#endif /* DATASTRUCTURE_H */
+#endif /* DATASTRUCTURE_LIST_H */

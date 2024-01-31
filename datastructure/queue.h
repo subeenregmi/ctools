@@ -11,11 +11,10 @@
 
 #include "list.h"
 
-
 typedef List Queue;
 typedef ListItem QueueItem;
 
-inline void add_item(Queue *queue, QueueItem *item);
-QueueItem* remove_item(Queue *queue);
+inline void enque(Queue *queue, QueueItem *item);
+QueueItem* deque(Queue *queue);
 
-#endif
+#endif // DATASTRUCTURE_QUEUE_H
