@@ -1,4 +1,5 @@
 #include "syscall.h"
+#include "syscall_def.h"
 
 int syscall(void *arg1, void *arg2, void *arg3, void *arg4) {
     int ret;

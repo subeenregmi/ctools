@@ -1,41 +1,20 @@
-// C Wrapper for x86_64 Linux System Calls
+/* Copyright (C) 2024
+ *
+ * Author: Subeen Regmi <subeenregmi123@gmail.com>
+ * Date: 2024-02-07
+ *
+ * This is the clib wrapper for the x86_64 linux system calls.
+ *
+ * The syscall function is the generic system call. The functions below, 
+ * just help to call a specific system call.
+ *
+ * Note: Some params are outlined in the flags/<syscall>.h directory, e.g:
+ * open has its flags and mode params outlined in flags/open.h
+ */
 #ifndef CLIB_SYSCALL_H
 #define CLIB_SYSCALL_H
 
 #include "string.h"
-
-// File descriptors
-#define STDIN_FD        0
-#define STDOUT_FD       1
-#define STDERR_FD       2
-
-// Linux syscalls
-#define SYS_READ        0
-#define SYS_WRITE       1
-#define SYS_OPEN        2
-#define SYS_CLOSE       3
-
-/* sys_open requires:
- *      - Filename or path
- *      - Flags: These are the creation and status flags for the file 
- *      - Mode: The permission of the file.
- */
-
-// sys_open - Required flags 
-#define READ_ONLY       0
-#define WRITE_ONLY      1
-#define READ_WRITE      2
-
-// sys_open - Optional flags
-// File creation flags
-#define CREATE_IFNOT    100
-
-// File status flags
-#define APPEND          2000
-#define ASYNC           20000
-
-// sys_open - Modes/Permissions
-
 
 int syscall(void *arg1, void *arg2, void *arg3, void *arg4);
 
